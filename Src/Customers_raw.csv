@@ -1,0 +1,16 @@
+customer_id,customer_name,email,city,state,country,signup_date
+C001,John Smith,john.smith@email.com,Los Angeles,CA,USA,2023-01-15
+C002,Alice Brown,alice.b@email.com,San Diego,CA,USA,2023-02-10
+C003,Raj Patel,raj.p@email.com,San Jose,CA,USA,2023-03-05
+C004,Maria Garcia,maria.g@email.com,Austin,TX,USA,2023-01-20
+C005,Wei Chen,wei.chen@email.com,Seattle,WA,USA,2023-04-12
+C006,Emily Johnson,emily.j@email.com,San Francisco,CA,USA,2023-05-08
+C007,Michael Lee,michael.lee@email.com,Sunnyvale,CA,USA,2023-06-14
+C008,Anita Desai,anita.d@email.com,Fremont,CA,USA,2023-07-02
+C009,David Wilson,david.w@email.com,Dallas,TX,USA,2023-03-18
+C010,Sophia Martinez,sophia.m@email.com,Houston,TX,USA,2023-04-25
+C011,Daniel Kim,daniel.k@email.com,Irvine,CA,USA,2023-05-30
+C012,Priya Nair,priya.n@email.com,Mountain View,CA,USA,2023-06-09
+C013,James Anderson,james.a@email.com,Redmond,WA,USA,2023-07-21
+C014,Linda Nguyen,linda.n@email.com,San Jose,CA,USA,2023-08-03
+C015,Carlos Ramirez,carlos.r@email.com,Phoenix,AZ,USA,2023-09-11
