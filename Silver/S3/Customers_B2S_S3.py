@@ -9,9 +9,8 @@ import pandas as pd
 # CONFIG
 # =========================
 Table_name = "Customers"
-BRONZE_PATH = f"s3://sales-mini/bronze/app_sales_oltp/{Table_name}/"
-SILVER_PATH = f"s3://sales-mini/silver/{Table_name}/{Table_name}.csv"
-
+BRONZE_PATH = f"s3://sXXXXXXXXXXXXXXXXXXXXX/{Table_name}/"
+SILVER_PATH = f"s3://sXXXXXXXXXXXXXXXXXXXXX/{Table_name}/{Table_name}.csv"
 # If you want to only process the *latest run_ts*, set this True.
 PROCESS_LATEST_RUN_ONLY = True
 
