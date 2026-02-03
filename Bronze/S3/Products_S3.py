@@ -3,7 +3,7 @@ import boto3
 # -------- CONFIG --------
 LOCAL_FILE = "/XXXXXXXXXXXXX.csv"
 S3_BUCKET = "XXXXXXXXX"
-S3_KEY = "XXXX.csv"
+S3_KEY = "XXXXXXX.csv"
 # ------------------------
 
 s3 = boto3.client("s3")

@@ -9,8 +9,8 @@ import pandas as pd
 # CONFIG
 # =========================
 Table_name = "Orderlines"
-BRONZE_PATH = f"s3://sXXXXXXXXXXXXXXXXXXXXX/{Table_name}/"
-SILVER_PATH = f"s3://sXXXXXXXXXXXXXXXXXXXXX/{Table_name}/{Table_name}.csv"
+BRONZE_PATH = f"s3://sXXXXXXXXX/"
+SILVER_PATH = f"s3://XXXXXXXcsv"
 
 # If you want to only process the *latest run_ts*, set this True.
 PROCESS_LATEST_RUN_ONLY = True
