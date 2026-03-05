@@ -1,26 +1,28 @@
 from __future__ import annotations
 
 import awswrangler as wr
-
 from common.s3_write import write_single_csv_to_s3
-from common.utils import now_utc_str, pick_first_col, standardize_columns, trim_strings
+from common.utils import standardize_columns, trim_strings, now_utc_str
 
-SILVER_CUSTOMERS = "s3://XXXXXXX.csv"
-GOLD_DIM_CUSTOMERS = "s3://sXXXXXXX.csv"
+SILVER_CUSTOMERS = "s3://sales-mini/silver/Customers/Customers.csv"
+GOLD_DIM_CUSTOMERS = "s3://sales-mini/gold/dim_customers/dim_customers.csv"
 
 
 def main():
     df = wr.s3.read_csv(SILVER_CUSTOMERS)
-    df = standardize_columns(df)
-    df = trim_strings(df)
+    df = trim_strings(standardize_columns(df))
 
-    cust_key = pick_first_col(df, ["customer_id", "customerid", "cust_id"])
-    if not cust_key:
-        raise ValueError(f"Customers missing customer_id-like key. Found: {list(df.columns)}")
+    keep_cols = [
+        "customer_id",
+        "customer_name",
+        "email",
+        "city",
+        "state",
+        "country",
+    ]
 
-    df = df.drop_duplicates(subset=[cust_key]).copy()
+    df = df[[c for c in keep_cols if c in df.columns]].copy()
     df["gold_load_ts"] = now_utc_str()
-    df = df.sort_values(cust_key).reset_index(drop=True)
 
     write_single_csv_to_s3(df, GOLD_DIM_CUSTOMERS)
 

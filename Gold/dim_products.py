@@ -1,26 +1,27 @@
 from __future__ import annotations
 
 import awswrangler as wr
-
 from common.s3_write import write_single_csv_to_s3
-from common.utils import now_utc_str, pick_first_col, standardize_columns, trim_strings
+from common.utils import standardize_columns, trim_strings, now_utc_str
 
-SILVER_PRODUCTS = "s3://XXXXXXX.csv"
-GOLD_DIM_PRODUCTS = "s3://XXXXXXX.csv"
+SILVER_PRODUCTS = "s3://sales-mini/silver/Products/Products.csv"
+GOLD_DIM_PRODUCTS = "s3://sales-mini/gold/dim_products/dim_products.csv"
 
 
 def main():
     df = wr.s3.read_csv(SILVER_PRODUCTS)
-    df = standardize_columns(df)
-    df = trim_strings(df)
+    df = trim_strings(standardize_columns(df))
 
-    prod_key = pick_first_col(df, ["product_id", "productid", "sku", "item_id"])
-    if not prod_key:
-        raise ValueError(f"Products missing product_id-like key. Found: {list(df.columns)}")
+    keep_cols = [
+        "product_id",
+        "product_name",
+        "category",
+        "subcategory",
+        "list_price",
+    ]
 
-    df = df.drop_duplicates(subset=[prod_key]).copy()
+    df = df[[c for c in keep_cols if c in df.columns]].copy()
     df["gold_load_ts"] = now_utc_str()
-    df = df.sort_values(prod_key).reset_index(drop=True)
 
     write_single_csv_to_s3(df, GOLD_DIM_PRODUCTS)
 
