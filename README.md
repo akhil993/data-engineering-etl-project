@@ -4,7 +4,7 @@
 This project demonstrates how to build a scalable analytics pipeline using AWS.
 
 ## Architecture
-(Insert architecture diagram)
+https://github.com/akhil993/data-engineering-etl-project/tree/main/Architecture#:~:text=Pipeline_diagram.png
 
 ## Tech Stack
 Python
